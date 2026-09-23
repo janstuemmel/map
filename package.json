@@ -1,0 +1,22 @@
+{
+  "name": "map",
+  "version": "1.0.0",
+  "scripts": {
+    "start": "vite"
+  },
+  "type": "module",
+  "dependencies": {
+    "@mapbox-controls/ruler": "^4.1.0",
+    "@versatiles/style": "^6.0.1",
+    "maplibre-gl": "^6.11.1"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^2.5.14",
+    "lefthook": "^2.1.14",
+    "typescript": "^7.0.2",
+    "vite": "^8.3.0"
+  },
+  "allowScripts": {
+    "lefthook@2.1.14": false
+  }
+}
