@@ -14,9 +14,9 @@ export const addSourceTracks = (map: MapLibreMap) => {
     minzoom: 10,
     layout: { visibility: 'visible' },
     paint: {
-      'line-color': '#333333',
-      'line-width': ['interpolate', ['linear'], ['zoom'], 10, 0.7, 14, 2.5],
-      'line-opacity': ['interpolate', ['linear'], ['zoom'], 10, 0.7, 14, 1],
+      'line-color': '#998200',
+      'line-width': ['interpolate', ['linear'], ['zoom'], 10, 1.2, 14, 2.5],
+      'line-opacity': ['interpolate', ['linear'], ['zoom'], 10, 0.3, 14, 1],
       'line-dasharray': [2, 1.5],
     },
   });
