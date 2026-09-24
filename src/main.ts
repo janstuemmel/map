@@ -3,6 +3,7 @@ import { addProtocol, Map as MaplibreMap, setWorkerUrl } from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Protocol } from "pmtiles";
+import { addControls } from "./features/controls";
 import { persistMapView, restoreMapView } from "./features/mapView";
 import { addRoads } from "./features/roads";
 import { addTerrain } from "./features/terrarium";
@@ -34,6 +35,11 @@ const map = new MaplibreMap({
 
 restoreMapView(map);
 persistMapView(map);
+
+map.dragRotate.disable();
+map.touchZoomRotate.disableRotation();
+
+addControls(map);
 
 map.on("load", async () => {
 	addVersatiles(map);

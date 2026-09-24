@@ -22,21 +22,22 @@ export const waterRiver: LayerSpecification = {
 	],
 	source: "versatiles",
 	paint: {
-		"line-color": "#beddf3",
+		"line-color": "#7fb8e8",
 		"line-width": {
 			type: "interval",
 			stops: [
 				[9, 0],
-				[10, 3],
-				[15, 5],
-				[17, 9],
-				[18, 20],
-				[20, 60],
+				[10, 1],
+				[15, 3],
+				[17, 4],
+				[18, 5],
+				[20, 15],
 			],
 		},
+		"line-dasharray": [10, 5],
 	},
 	layout: {
-		"line-cap": "round",
+		"line-cap": "butt",
 		"line-join": "round",
 	},
 };

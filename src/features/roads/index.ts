@@ -53,7 +53,31 @@ const layers: LayerSpecification[] = [
 	},
 
 	{
-		id: "roads-street-tertiary",
+		id: "roads-tertiary-outline",
+		type: "line",
+		source: "roads",
+		"source-layer": "roads",
+		minzoom: 7,
+		filter: ["in", ["get", "highway"], ["literal", ["tertiary"]]],
+		paint: {
+			"line-color": [
+				"interpolate",
+				["linear"],
+				["zoom"],
+				8,
+				"#e3e7de",
+				11,
+				"#8c8c8c",
+			],
+			"line-width": ["interpolate", ["linear"], ["zoom"], 8, 1.2, 14, 3],
+		},
+		layout: {
+			"line-join": "round",
+			"line-cap": "round",
+		},
+	},
+	{
+		id: "roads-tertiary",
 		type: "line",
 		source: "roads",
 		"source-layer": "roads",
@@ -69,46 +93,25 @@ const layers: LayerSpecification[] = [
 				11,
 				"#b4b4b4",
 			],
-			"line-width": ["interpolate", ["linear"], ["zoom"], 6, 0.5, 14, 6],
+			"line-width": ["interpolate", ["linear"], ["zoom"], 8, 0.8, 14, 2],
 		},
 	},
 
 	{
-		id: "roads-secondary",
+		id: "roads-secondary-outline",
 		type: "line",
 		source: "roads",
 		"source-layer": "roads",
-		minzoom: 6,
+		minzoom: 5,
 		filter: ["in", ["get", "highway"], ["literal", ["secondary"]]],
 		paint: {
 			"line-color": [
 				"interpolate",
 				["linear"],
 				["zoom"],
-				7,
-				"#e7ebe2",
-				10,
-				"#b4b4b4",
-			],
-			"line-width": ["interpolate", ["linear"], ["zoom"], 6, 2, 14, 4],
-		},
-	},
-
-	{
-		id: "roads-primary-outline",
-		type: "line",
-		source: "roads",
-		"source-layer": "roads",
-		minzoom: 5,
-		filter: ["in", ["get", "highway"], ["literal", ["primary"]]],
-		paint: {
-			"line-color": [
-				"interpolate",
-				["linear"],
-				["zoom"],
-				6,
+				5,
 				"#e3e7de",
-				9,
+				10,
 				"#8c8c8c",
 			],
 			"line-width": ["interpolate", ["linear"], ["zoom"], 6, 3.5, 14, 5.5],
@@ -119,20 +122,20 @@ const layers: LayerSpecification[] = [
 		},
 	},
 	{
-		id: "roads-primary",
+		id: "roads-secondary",
 		type: "line",
 		source: "roads",
 		"source-layer": "roads",
 		minzoom: 5,
-		filter: ["in", ["get", "highway"], ["literal", ["primary"]]],
+		filter: ["in", ["get", "highway"], ["literal", ["secondary"]]],
 		paint: {
 			"line-color": [
 				"interpolate",
 				["linear"],
 				["zoom"],
-				6,
+				5,
 				"#e7ebe2",
-				9,
+				10,
 				"#b4b4b4",
 			],
 			"line-width": ["interpolate", ["linear"], ["zoom"], 6, 2, 14, 4],
@@ -144,12 +147,12 @@ const layers: LayerSpecification[] = [
 	},
 
 	{
-		id: "roads-trunk-outline",
+		id: "roads-trunk-primary-outline",
 		type: "line",
 		source: "roads",
 		"source-layer": "roads",
 		minzoom: 4,
-		filter: ["in", ["get", "highway"], ["literal", ["trunk"]]],
+		filter: ["in", ["get", "highway"], ["literal", ["trunk", "primary"]]],
 		paint: {
 			"line-color": [
 				"interpolate",
@@ -173,7 +176,7 @@ const layers: LayerSpecification[] = [
 		source: "roads",
 		"source-layer": "roads",
 		minzoom: 4,
-		filter: ["in", ["get", "highway"], ["literal", ["trunk"]]],
+		filter: ["in", ["get", "highway"], ["literal", ["trunk", "primary"]]],
 		paint: {
 			"line-color": [
 				"interpolate",
