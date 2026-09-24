@@ -5,6 +5,7 @@ import "maplibre-gl/dist/maplibre-gl.css";
 import { Protocol } from "pmtiles";
 import { addControls } from "./features/controls";
 import { addLandfills } from "./features/landfills";
+import { addLandmarks } from "./features/landmarks";
 import { persistMapView, restoreMapView } from "./features/mapView";
 import { addRoads } from "./features/roads";
 import { addTerrain } from "./features/terrarium";
@@ -45,6 +46,7 @@ addControls(map);
 map.on("load", async () => {
 	addVersatiles(map);
 	addLandfills(map);
+	addLandmarks(map);
 	addRoads(map);
 	addTerrain(map);
 });

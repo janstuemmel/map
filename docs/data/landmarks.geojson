@@ -1,0 +1,77 @@
+{
+  "type": "FeatureCollection",
+  "features": [
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Adad",
+        "category": "landmark",
+        "sym": "Summit"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.601797,
+          25.532493
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wadi Teshuinat",
+        "category": "landmark"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.524228,
+          24.849811
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Fozzigaren",
+        "category": "landmark",
+        "description": "Arch of Avazagar, Arche d’Afazedjar"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.633641,
+          24.684188
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Wadi Mathendush",
+        "category": "landmark"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          12.174925,
+          25.806122
+        ]
+      }
+    },
+    {
+      "type": "Feature",
+      "properties": {
+        "name": "Goos - Kaous Tneklhikat",
+        "category": "landmark"
+      },
+      "geometry": {
+        "type": "Point",
+        "coordinates": [
+          10.577743,
+          24.857725
+        ]
+      }
+    }
+  ]
+}
