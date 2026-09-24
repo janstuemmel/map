@@ -21,9 +21,9 @@ export const addTerrain = (map: MapLibreMap) => {
 			maxzoom: 15,
 			paint: {
 				"hillshade-exaggeration": 1,
-				"hillshade-accent-color": "hsla(0, 0%, 0%, 0.5)",
-				"hillshade-highlight-color": "hsla(100, 100%, 100%, 0.3)",
-				"hillshade-shadow-color": "hsla(0, 0%, 0%, 0.3)",
+				"hillshade-accent-color": "hsla(0, 0%, 0%, 0.2)",
+				"hillshade-highlight-color": "hsla(100, 100%, 100%, 0.2)",
+				"hillshade-shadow-color": "hsla(0, 0%, 0%, 0.2)",
 			},
 		},
 		"water-ocean",
