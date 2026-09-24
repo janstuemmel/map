@@ -37,8 +37,8 @@ persistMapView(map);
 
 map.on("load", async () => {
 	addVersatiles(map);
-	addTerrain(map);
 	addRoads(map);
+	addTerrain(map);
 });
 
 map.on("zoom", () => console.log("zoom level:", map.getZoom()));
