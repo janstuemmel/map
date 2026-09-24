@@ -1,9 +1,11 @@
 import { inlineSources, osm } from "@versatiles/style";
 import { Map as MaplibreMap, setWorkerUrl } from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
-import { addSourceTerrain } from "./sources/terrain";
-import { addSourceTracks } from "./sources/tracks";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { persistMapView, restoreMapView } from "./features/mapView";
+import { addTerrain } from "./features/terrarium";
+import { addTracks } from "./features/tracks";
+import { addVersatiles } from "./features/versatiles";
 
 setWorkerUrl(workerUrl);
 
@@ -13,23 +15,27 @@ const style = osm({
 	urls: {
 		base: "https://tiles.versatiles.org",
 	},
-	layers: {
-		// labels: false,
-		land: false,
-	},
 });
+
+console.log(await inlineSources(style));
 
 const map = new MaplibreMap({
 	container: "map",
-	style: await inlineSources(style),
-	center: [9.11, 33.11],
-	zoom: 9,
-	maxZoom: 14,
+	style: {
+		version: 8,
+		glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+		layers: [],
+		sources: {},
+	},
 });
 
+restoreMapView(map);
+persistMapView(map);
+
 map.on("load", async () => {
-	addSourceTerrain(map);
-	addSourceTracks(map);
+	addVersatiles(map);
+	addTerrain(map);
+	addTracks(map);
 });
 
 map.on("zoom", () => {

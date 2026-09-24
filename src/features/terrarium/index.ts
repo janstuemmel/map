@@ -1,6 +1,6 @@
 import type { Map as MapLibreMap } from "maplibre-gl";
 
-export const addSourceTerrain = (map: MapLibreMap) => {
+export const addTerrain = (map: MapLibreMap) => {
 	map.addSource("aws-terrain", {
 		type: "raster-dem",
 		tiles: [

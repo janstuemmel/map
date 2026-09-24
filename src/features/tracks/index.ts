@@ -1,6 +1,6 @@
 import type { Map as MapLibreMap } from "maplibre-gl";
 
-export const addSourceTracks = (map: MapLibreMap) => {
+export const addTracks = (map: MapLibreMap) => {
 	map.addSource("tracks-ly", {
 		type: "geojson",
 		data: `/map/data/paths-ly.geojson`,
