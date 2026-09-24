@@ -1,18 +1,22 @@
 import { inlineSources, osm } from "@versatiles/style";
-import { Map as MaplibreMap } from "maplibre-gl";
+import { Map as MaplibreMap, setWorkerUrl } from "maplibre-gl";
+import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import { addSourceTerrain } from "./sources/terrain";
 import { addSourceTracks } from "./sources/tracks";
+import "maplibre-gl/dist/maplibre-gl.css";
+
+setWorkerUrl(workerUrl);
 
 const style = osm({
 	theme: "toner",
 	text: { language: "de" },
-  urls: {
-    base: 'https://tiles.versatiles.org'
-  },
-  layers: {
-    // labels: false,
-    land: false,
-  },
+	urls: {
+		base: "https://tiles.versatiles.org",
+	},
+	layers: {
+		// labels: false,
+		land: false,
+	},
 });
 
 const map = new MaplibreMap({
@@ -23,11 +27,11 @@ const map = new MaplibreMap({
 	maxZoom: 14,
 });
 
-map.on('load', async () => {
-  addSourceTerrain(map)
-  addSourceTracks(map)
-})
+map.on("load", async () => {
+	addSourceTerrain(map);
+	addSourceTracks(map);
+});
 
-map.on('zoom', () => {
-  console.log('zoom level:', map.getZoom())
-})
+map.on("zoom", () => {
+	console.log("zoom level:", map.getZoom());
+});

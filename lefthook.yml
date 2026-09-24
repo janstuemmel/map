@@ -1,4 +1,7 @@
 pre-commit:
   commands:
+    lint:
+      glob: "*.{js,ts,json}"
+      run: npx biome check --write --no-errors-on-unmatched {staged_files} && git add {staged_files}
     build:
       run: npm run build && git add docs
