@@ -24,7 +24,7 @@ export const addVersatiles = (map: MapLibreMap) => {
 
 	// map.addLayer(streetMotorway);
 	// map.addLayer(streetTrunk);
-	map.addLayer(streetTrack);
+	// map.addLayer(streetTrack);
 	// map.addLayer(streetSecondary);
 	// map.addLayer(streetTertiary);
 

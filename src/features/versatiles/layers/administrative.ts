@@ -31,6 +31,34 @@ export const administrative: LayerSpecification[] = [
 	// },
 
 	{
+		id: "boundary-country-outline",
+		type: "line",
+		"source-layer": "boundaries",
+		filter: [
+			"all",
+			["==", "admin_level", 2],
+			["!=", "maritime", true],
+			["!=", "disputed", true],
+			["!=", "coastline", true],
+		],
+		source: "versatiles",
+		paint: {
+			"line-color": "#d2b8e8",
+			"line-width": {
+				type: "interval",
+				stops: [
+					[2, 0],
+					[3, 7],
+					[10, 10],
+				],
+			},
+		},
+		layout: {
+			"line-cap": "round",
+			"line-join": "round",
+		},
+	},
+	{
 		id: "boundary-country",
 		type: "line",
 		"source-layer": "boundaries",
@@ -49,9 +77,10 @@ export const administrative: LayerSpecification[] = [
 				stops: [
 					[2, 0],
 					[3, 1],
-					[10, 4],
+					[10, 2],
 				],
 			},
+			"line-dasharray": [3, 3, 0.1, 3],
 		},
 		layout: {
 			"line-cap": "round",
