@@ -1,29 +1,53 @@
-import type { SymbolLayerSpecification } from "maplibre-gl";
+import type {
+	CircleLayerSpecification,
+	SymbolLayerSpecification,
+} from "maplibre-gl";
 
 const createCityLayer = (
 	id: string,
-	{ filter, layout, paint, minzoom }: Partial<SymbolLayerSpecification>,
-): SymbolLayerSpecification => ({
-	id,
-	type: "symbol",
-	"source-layer": "place_labels",
-	filter,
-	layout: {
-		"icon-image": "osm:circle_11",
-		"text-field": "{name_en}",
-		"text-font": ["noto_sans_regular"],
-		...layout,
+	{
+		filter,
+		layout,
+		paint,
+		minzoom,
+		dotRadius,
+	}: Partial<SymbolLayerSpecification> & { dotRadius: number },
+): (CircleLayerSpecification | SymbolLayerSpecification)[] => [
+	{
+		id: `${id}-dot`,
+		type: "circle",
+		"source-layer": "place_labels",
+		filter,
+		paint: {
+			"circle-radius": dotRadius,
+			"circle-color": "#ffffff",
+			"circle-stroke-color": "#4a4a4a",
+			"circle-stroke-width": 1,
+		},
+		source: "versatiles",
+		minzoom,
 	},
-	source: "versatiles",
-	paint: {
-		"text-color": "#383838",
-		"text-translate": [0, -12],
-		...paint,
+	{
+		id,
+		type: "symbol",
+		"source-layer": "place_labels",
+		filter,
+		layout: {
+			"text-field": "{name_en}",
+			"text-font": ["noto_sans_regular"],
+			...layout,
+		},
+		source: "versatiles",
+		paint: {
+			"text-color": "#383838",
+			"text-translate": [0, -12],
+			...paint,
+		},
+		minzoom,
 	},
-	minzoom,
-});
+];
 
-export const labels: SymbolLayerSpecification[] = [
+export const labels: (CircleLayerSpecification | SymbolLayerSpecification)[] = [
 	{
 		id: "label-street-primary",
 		type: "symbol",
@@ -81,29 +105,34 @@ export const labels: SymbolLayerSpecification[] = [
 		},
 		minzoom: 2,
 	},
-	createCityLayer("label-place-village", {
+	...createCityLayer("label-place-village", {
 		filter: ["==", "kind", "village"],
 		minzoom: 10,
-		layout: { "text-size": 10, "icon-size": 0.7 },
+		dotRadius: 2.5,
+		layout: { "text-size": 10 },
 	}),
-	createCityLayer("label-place-town", {
+	...createCityLayer("label-place-town", {
 		filter: ["==", "kind", "town"],
 		minzoom: 7,
-		layout: { "text-size": 12, "icon-size": 0.7 },
+		dotRadius: 2.5,
+		layout: { "text-size": 12 },
 	}),
-	createCityLayer("label-place-city", {
+	...createCityLayer("label-place-city", {
 		filter: ["==", "kind", "city"],
 		minzoom: 6,
-		layout: { "text-size": 14, "icon-size": 1 },
+		dotRadius: 3.5,
+		layout: { "text-size": 14 },
 	}),
-	createCityLayer("label-place-statecapital", {
+	...createCityLayer("label-place-statecapital", {
 		filter: ["==", "kind", "state_capital"],
 		minzoom: 5,
-		layout: { "text-size": 14, "icon-size": 1 },
+		dotRadius: 3.5,
+		layout: { "text-size": 14 },
 	}),
-	createCityLayer("label-place-capital", {
+	...createCityLayer("label-place-capital", {
 		filter: ["==", "kind", "capital"],
 		minzoom: 4,
-		layout: { "text-size": 16, "icon-size": 1 },
+		dotRadius: 3.5,
+		layout: { "text-size": 16 },
 	}),
 ];
