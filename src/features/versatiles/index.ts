@@ -1,13 +1,6 @@
 import type { MapLibreMap } from "maplibre-gl";
 import { addLayer } from "../../common/util/addLayer";
 import { administrative } from "./layers/administrative";
-import {
-	streetMotorway,
-	streetSecondary,
-	streetTertiary,
-	streetTrack,
-	streetTrunk,
-} from "./layers/infrastructure";
 import { labels } from "./layers/labels";
 import { waterOcean, waterRiver } from "./layers/water";
 
@@ -28,11 +21,11 @@ export const addVersatiles = (map: MapLibreMap) => {
 	map.addLayer(waterOcean);
 	map.addLayer(waterRiver);
 
-	map.addLayer(streetMotorway);
-	map.addLayer(streetTrunk);
-	map.addLayer(streetTrack);
-	map.addLayer(streetSecondary);
-	map.addLayer(streetTertiary);
+	// map.addLayer(streetMotorway);
+	// map.addLayer(streetTrunk);
+	// map.addLayer(streetTrack);
+	// map.addLayer(streetSecondary);
+	// map.addLayer(streetTertiary);
 
 	addLayer(map, administrative);
 	addLayer(map, labels);

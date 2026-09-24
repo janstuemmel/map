@@ -1,12 +1,15 @@
 import { inlineSources, osm } from "@versatiles/style";
-import { Map as MaplibreMap, setWorkerUrl } from "maplibre-gl";
+import { addProtocol, Map as MaplibreMap, setWorkerUrl } from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
+import { Protocol } from "pmtiles";
 import { persistMapView, restoreMapView } from "./features/mapView";
+import { addRoads } from "./features/roads";
 import { addTerrain } from "./features/terrarium";
-import { addTracks } from "./features/tracks";
 import { addVersatiles } from "./features/versatiles";
 
+const protocol = new Protocol();
+addProtocol("pmtiles", protocol.tile);
 setWorkerUrl(workerUrl);
 
 const style = osm({
@@ -35,9 +38,7 @@ persistMapView(map);
 map.on("load", async () => {
 	addVersatiles(map);
 	addTerrain(map);
-	addTracks(map);
+	addRoads(map);
 });
 
-map.on("zoom", () => {
-	console.log("zoom level:", map.getZoom());
-});
+map.on("zoom", () => console.log("zoom level:", map.getZoom()));
