@@ -251,5 +251,5 @@ export const addRoads = (map: MapLibreMap) => {
 		url: `pmtiles://${window.location.origin}/map/data/roads.pmtiles`,
 	});
 
-	addLayer(map, layers, "label-street-primary");
+	addLayer(map, layers);
 };

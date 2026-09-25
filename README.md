@@ -1,5 +1,11 @@
 # map
 
+## Software
+
+* osmium (aur)
+* tippecanoe (aur)
+* gdal (ogr2ogr)
+
 ## Debug
 
 * [Openstreetmap](https://www.openstreetmap.org/) Debug objects using right click

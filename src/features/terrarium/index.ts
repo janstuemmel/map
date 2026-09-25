@@ -26,6 +26,6 @@ export const addTerrain = (map: MapLibreMap) => {
 				"hillshade-shadow-color": "hsla(0, 0%, 0%, 0.2)",
 			},
 		},
-		"water-ocean",
+		// "water-ocean",
 	);
 };

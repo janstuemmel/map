@@ -7,6 +7,7 @@ import { addLayer } from "./common/util/addLayer";
 import { addControls } from "./features/controls";
 import { addLandfills } from "./features/landfills";
 import { addLandmarks } from "./features/landmarks";
+import { addWorld } from "./features/map";
 import { persistMapView, restoreMapView } from "./features/mapView";
 import { addRoads } from "./features/roads";
 import { addTerrain } from "./features/terrarium";
@@ -52,12 +53,11 @@ map.touchZoomRotate.disableRotation();
 addControls(map);
 
 map.on("load", async () => {
-	addVersatiles(map);
-	addLandfills(map);
-	addLandmarks(map);
-	addRoads(map);
-	addTerrain(map);
-	addLayer(map, administrative);
+	// addVersatiles(map);
+	// addLandfills(map);
+	// addLandmarks(map);
+	// addRoads(map);
+	addWorld(map);
+	// addTerrain(map);
+	// addLayer(map, administrative);
 });
-
-map.on("zoom", () => console.log("zoom level:", map.getZoom()));
