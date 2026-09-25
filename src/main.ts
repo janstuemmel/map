@@ -3,6 +3,7 @@ import { addProtocol, Map as MaplibreMap, setWorkerUrl } from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Protocol } from "pmtiles";
+import { addLayer } from "./common/util/addLayer";
 import { addControls } from "./features/controls";
 import { addLandfills } from "./features/landfills";
 import { addLandmarks } from "./features/landmarks";
@@ -10,6 +11,7 @@ import { persistMapView, restoreMapView } from "./features/mapView";
 import { addRoads } from "./features/roads";
 import { addTerrain } from "./features/terrarium";
 import { addVersatiles } from "./features/versatiles";
+import { administrative } from "./features/versatiles/layers/administrative";
 
 const protocol = new Protocol();
 addProtocol("pmtiles", protocol.tile);
@@ -49,6 +51,7 @@ map.on("load", async () => {
 	addLandmarks(map);
 	addRoads(map);
 	addTerrain(map);
+	addLayer(map, administrative);
 });
 
 map.on("zoom", () => console.log("zoom level:", map.getZoom()));

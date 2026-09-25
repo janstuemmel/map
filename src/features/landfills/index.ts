@@ -144,7 +144,7 @@ export const addLandfills = async (map: MapLibreMap) => {
 		type: "geojson",
 		data: url,
 	});
-	addLayer(map, categoryLayers, "boundary-country-outline");
+	addLayer(map, categoryLayers, "label-street-primary");
 
 	const geojson: GeoJSON.FeatureCollection = await fetch(url).then((res) =>
 		res.json(),

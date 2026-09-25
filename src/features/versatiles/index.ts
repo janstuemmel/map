@@ -1,6 +1,5 @@
 import type { MapLibreMap } from "maplibre-gl";
 import { addLayer } from "../../common/util/addLayer";
-import { administrative } from "./layers/administrative";
 import { labels } from "./layers/labels";
 import { waterOcean, waterRiver } from "./layers/water";
 
@@ -20,6 +19,5 @@ export const addVersatiles = (map: MapLibreMap) => {
 
 	map.addLayer(waterOcean);
 	map.addLayer(waterRiver);
-	addLayer(map, administrative);
 	addLayer(map, labels);
 };
