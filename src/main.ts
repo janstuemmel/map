@@ -32,6 +32,12 @@ const map = new MaplibreMap({
 	style: {
 		version: 8,
 		glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
+		sprite: [
+			{
+				id: "extras",
+				url: "https://tiles.versatiles.org/assets/sprites/extras",
+			},
+		],
 		layers: [],
 		sources: {},
 	},
