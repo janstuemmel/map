@@ -44,7 +44,7 @@ tippecanoe -Z0 -z10 \
   -L boundaries:$geojsons/boundaries.geojson \
   -L places:$geojsons/places.geojson \
   -y highway -y name -y name:en -y name:de -y admin_level -y boundary -y place -y water -y natural -y capital \
-  --simplification=20 \
+  --simplification=10 \
   --drop-rate=1 \
   --drop-densest-as-needed \
   --calculate-feature-density \
