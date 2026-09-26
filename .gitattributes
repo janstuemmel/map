@@ -1,3 +1,2 @@
 *.pmtiles filter=lfs diff=lfs merge=lfs -text
-*.geojson filter=lfs diff=lfs merge=lfs -text
 public/data/map.pmtiles.png filter=lfs diff=lfs merge=lfs -text
