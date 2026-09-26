@@ -1,0 +1,87 @@
+import type { LayerSpecification } from "maplibre-gl";
+
+export const boundaries: LayerSpecification[] = [
+	{
+		id: "boundary-country-outline",
+		type: "line",
+		"source-layer": "boundaries",
+		filter: [
+			"all",
+			["==", "admin_level", "2"],
+			["!=", "maritime", "yes"],
+			["!=", "disputed", "yes"],
+			["!=", "coastline", "yes"],
+		],
+		source: "world",
+		paint: {
+			"line-color": [
+				"interpolate",
+				["linear"],
+				["zoom"],
+				2,
+				"#edf1e7",
+				5,
+				"#d2b8e8",
+			],
+			"line-width": [
+				"interpolate",
+				["linear"],
+				["zoom"],
+				2,
+				0,
+				4,
+				4,
+				6,
+				7,
+				10,
+				10,
+			],
+		},
+		layout: {
+			"line-cap": "round",
+			"line-join": "round",
+		},
+	},
+	{
+		id: "boundary-country",
+		type: "line",
+		source: "world",
+		"source-layer": "boundaries",
+		filter: [
+			"all",
+			["==", "admin_level", "2"],
+			["!=", "maritime", "yes"],
+			["!=", "disputed", "yes"],
+			["!=", "coastline", "yes"],
+		],
+		paint: {
+			"line-color": [
+				"interpolate",
+				["linear"],
+				["zoom"],
+				2,
+				"#edf1e7",
+				5,
+				"#393b3e",
+			],
+			"line-width": [
+				"interpolate",
+				["linear"],
+				["zoom"],
+				2,
+				0,
+				4,
+				0.5,
+				6,
+				1,
+				10,
+				2,
+			],
+			"line-dasharray": [3, 3, 0.1, 3],
+		},
+		layout: {
+			"line-cap": "round",
+			"line-join": "round",
+		},
+	},
+];

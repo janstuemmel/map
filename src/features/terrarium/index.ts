@@ -18,7 +18,6 @@ export const addTerrain = (map: MapLibreMap) => {
 			source: "aws-terrain",
 			type: "hillshade",
 			layout: { visibility: "visible" },
-			maxzoom: 15,
 			paint: {
 				"hillshade-exaggeration": 1,
 				"hillshade-accent-color": "hsla(0, 0%, 0%, 0.2)",
@@ -26,6 +25,6 @@ export const addTerrain = (map: MapLibreMap) => {
 				"hillshade-shadow-color": "hsla(0, 0%, 0%, 0.2)",
 			},
 		},
-		// "water-ocean",
+		"ocean",
 	);
 };

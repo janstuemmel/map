@@ -1,16 +1,29 @@
 import type { LayerSpecification, Map as MapLibreMap } from "maplibre-gl";
 import { addLayer } from "../../common/util/addLayer";
+import { boundaries } from "./layers/boundaries";
+import { places } from "./layers/places";
+import { roads } from "./layers/roads";
 
 const layers: LayerSpecification[] = [
 	{
-		id: "land-fill",
-		type: "fill",
-		source: "world",
-		"source-layer": "land",
+		id: "background",
+		type: "background",
 		paint: {
-			"fill-color": "#8f5f17",
+			"background-color": "#f7f5f2",
 		},
 	},
+	...roads,
+	...boundaries,
+	{
+		id: "ocean",
+		type: "fill",
+		source: "world",
+		"source-layer": "ocean",
+		paint: {
+			"fill-color": "#9cd7ff",
+		},
+	},
+	...places,
 ];
 
 export const addWorld = (map: MapLibreMap) => {

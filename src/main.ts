@@ -3,16 +3,12 @@ import { addProtocol, Map as MaplibreMap, setWorkerUrl } from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Protocol } from "pmtiles";
-import { addLayer } from "./common/util/addLayer";
 import { addControls } from "./features/controls";
 import { addLandfills } from "./features/landfills";
 import { addLandmarks } from "./features/landmarks";
 import { addWorld } from "./features/map";
 import { persistMapView, restoreMapView } from "./features/mapView";
-import { addRoads } from "./features/roads";
 import { addTerrain } from "./features/terrarium";
-import { addVersatiles } from "./features/versatiles";
-import { administrative } from "./features/versatiles/layers/administrative";
 
 const protocol = new Protocol();
 addProtocol("pmtiles", protocol.tile);
@@ -30,6 +26,7 @@ console.log(await inlineSources(style));
 
 const map = new MaplibreMap({
 	container: "map",
+	// maxBounds: [-14.37, 10.433, 36.507, 48.42],
 	style: {
 		version: 8,
 		glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
@@ -44,20 +41,16 @@ const map = new MaplibreMap({
 	},
 });
 
-restoreMapView(map);
-persistMapView(map);
-
 map.dragRotate.disable();
 map.touchZoomRotate.disableRotation();
 
+restoreMapView(map);
+persistMapView(map);
 addControls(map);
 
 map.on("load", async () => {
-	// addVersatiles(map);
-	// addLandfills(map);
-	// addLandmarks(map);
-	// addRoads(map);
 	addWorld(map);
-	// addTerrain(map);
-	// addLayer(map, administrative);
+	addTerrain(map);
+	addLandfills(map);
+	addLandmarks(map);
 });
