@@ -2,9 +2,9 @@ import { addProtocol, Map as MaplibreMap, setWorkerUrl } from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Protocol } from "pmtiles";
-import { addControls } from "./features/controls";
-import { persistMapView, restoreMapView } from "./features/mapView";
+import { layersLandmarks, sourceLandmarks } from "./features/landmarks";
 import { layerTerrarium, sourceAWSTerrarium } from "./features/terrarium";
+import { addControls, addPersistMapView } from "./features/view";
 import { layerBackground, layerOcean, sourceWorld } from "./features/world";
 import { layersBoundaries } from "./features/world/layers/boundaries";
 import { layersPlaces } from "./features/world/layers/places";
@@ -31,25 +31,19 @@ const map = new MaplibreMap({
 		layers: [
 			layerBackground,
 			layerTerrarium,
+			...layersRoads,
 			...layersBoundaries,
 			layerOcean,
-			...layersRoads,
 			...layersPlaces,
+			...layersLandmarks,
 		],
 		sources: {
 			...sourceWorld,
 			...sourceAWSTerrarium,
+			...sourceLandmarks,
 		},
 	},
 });
 
-restoreMapView(map);
-persistMapView(map);
+addPersistMapView(map);
 addControls(map);
-
-map.on("load", async () => {
-	// addWorld(map);
-	// addTerrain(map);
-	// addLandfills(map);
-	// addLandmarks(map);
-});
