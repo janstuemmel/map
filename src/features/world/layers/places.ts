@@ -47,7 +47,10 @@ export const createCityLayer = (
 	},
 ];
 
-export const places: (CircleLayerSpecification | SymbolLayerSpecification)[] = [
+export const layersPlaces: (
+	| CircleLayerSpecification
+	| SymbolLayerSpecification
+)[] = [
 	{
 		id: "label-street-primary",
 		type: "symbol",
@@ -66,7 +69,7 @@ export const places: (CircleLayerSpecification | SymbolLayerSpecification)[] = [
 				],
 			},
 		},
-		source: "versatiles",
+		source: "world",
 		paint: {
 			"icon-color": "#3b3b3b",
 			"text-color": "#3b3b3b",

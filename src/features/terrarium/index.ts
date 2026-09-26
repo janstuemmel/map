@@ -1,7 +1,7 @@
-import type { Map as MapLibreMap } from "maplibre-gl";
+import type { LayerSpecification, SourceSpecification } from "maplibre-gl";
 
-export const addTerrain = (map: MapLibreMap) => {
-	map.addSource("aws-terrain", {
+export const sourceAWSTerrarium: Record<string, SourceSpecification> = {
+	awsTerrarium: {
 		type: "raster-dem",
 		tiles: [
 			"https://s3.amazonaws.com/elevation-tiles-prod/terrarium/{z}/{x}/{y}.png",
@@ -10,21 +10,18 @@ export const addTerrain = (map: MapLibreMap) => {
 		tileSize: 256,
 		attribution:
 			'© <a href="https://www.mapzen.com/rights">Mapzen</a> and <a href="https://www.mapzen.com/rights/#services-and-data-sources">others</a>',
-	});
+	},
+};
 
-	map.addLayer(
-		{
-			id: "hills",
-			source: "aws-terrain",
-			type: "hillshade",
-			layout: { visibility: "visible" },
-			paint: {
-				"hillshade-exaggeration": 1,
-				"hillshade-accent-color": "hsla(0, 0%, 0%, 0.2)",
-				"hillshade-highlight-color": "hsla(100, 100%, 100%, 0.2)",
-				"hillshade-shadow-color": "hsla(0, 0%, 0%, 0.2)",
-			},
-		},
-		"ocean",
-	);
+export const layerTerrarium: LayerSpecification = {
+	id: "hills",
+	source: "awsTerrarium",
+	type: "hillshade",
+	layout: { visibility: "visible" },
+	paint: {
+		"hillshade-exaggeration": 1,
+		"hillshade-accent-color": "hsla(0, 0%, 0%, 0.2)",
+		"hillshade-highlight-color": "hsla(100, 100%, 100%, 0.2)",
+		"hillshade-shadow-color": "hsla(0, 0%, 0%, 0.2)",
+	},
 };

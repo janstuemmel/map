@@ -1,6 +1,6 @@
 import type { LayerSpecification } from "maplibre-gl";
 
-export const boundaries: LayerSpecification[] = [
+export const layersBoundaries: LayerSpecification[] = [
 	{
 		id: "boundary-country-outline",
 		type: "line",

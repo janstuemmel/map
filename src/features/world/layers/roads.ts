@@ -1,6 +1,6 @@
 import type { LayerSpecification } from "maplibre-gl";
 
-export const roads: LayerSpecification[] = [
+export const layersRoads: LayerSpecification[] = [
 	{
 		id: "roads-tracks-outline",
 		type: "line",
