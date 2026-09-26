@@ -19,7 +19,6 @@ const map = new MaplibreMap({
 	container: "map",
 	maxBounds: [-14.37, 10.433, 36.507, 48.42],
 	dragRotate: false,
-	touchZoomRotate: false,
 	style: {
 		version: 8,
 		glyphs: "https://demotiles.maplibre.org/font/{fontstack}/{range}.pbf",
@@ -45,6 +44,9 @@ const map = new MaplibreMap({
 		},
 	},
 });
+
+map.touchZoomRotate.disableRotation();
+map.touchPitch.disable();
 
 addPersistMapView(map);
 addControls(map);
