@@ -4,7 +4,6 @@ import type {
 	Map as MapLibreMap,
 	SymbolLayerSpecification,
 } from "maplibre-gl";
-import { addLayer } from "../../common/util/addLayer";
 
 interface CategoryStyle {
 	category: string;
@@ -144,7 +143,9 @@ export const addLandfills = async (map: MapLibreMap) => {
 		type: "geojson",
 		data: url,
 	});
-	addLayer(map, categoryLayers, "label-street-primary");
+	categoryLayers.forEach((l) => {
+		map.addLayer(l, "label-street-primary");
+	});
 
 	const geojson: GeoJSON.FeatureCollection = await fetch(url).then((res) =>
 		res.json(),
@@ -163,5 +164,5 @@ export const addLandfills = async (map: MapLibreMap) => {
 			})),
 		},
 	});
-	addLayer(map, labelLayer);
+	map.addLayer(labelLayer);
 };

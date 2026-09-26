@@ -2,6 +2,7 @@ import { addProtocol, Map as MaplibreMap, setWorkerUrl } from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
 import { Protocol } from "pmtiles";
+import { addLandfills } from "./features/landfills";
 import { layersLandmarks, sourceLandmarks } from "./features/landmarks";
 import { layerTerrarium, sourceAWSTerrarium } from "./features/terrarium";
 import { addControls, addPersistMapView } from "./features/view";
@@ -47,3 +48,7 @@ const map = new MaplibreMap({
 
 addPersistMapView(map);
 addControls(map);
+
+map.on("load", () => {
+	addLandfills(map);
+});
