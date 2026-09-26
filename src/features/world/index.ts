@@ -21,7 +21,7 @@ export const layerOcean: LayerSpecification = {
 export const sourceWorld: Record<string, SourceSpecification> = {
 	world: {
 		type: "vector",
-		// actually a pmtiles file, renamed to .png so GitHub's raw CDN allows range requests
-		url: `pmtiles://${window.location.origin}/map/data/map.png`,
+		// .png suffix so GitHub's raw CDN allows range requests, it's still a pmtiles file
+		url: `pmtiles://${window.location.origin}/map/data/map.pmtiles.png`,
 	},
 };

@@ -52,4 +52,4 @@ tippecanoe -Z0 -z10 \
 echo; echo; du -h $out/*
 
 # .png extension so GitHub's raw CDN serves it with range request support (pmtiles doesn't)
-cp $out/map.pmtiles public/data/map.png
+cp $out/map.pmtiles public/data/map.pmtiles.png
