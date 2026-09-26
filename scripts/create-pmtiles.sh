@@ -20,10 +20,8 @@ osmium export $osm/boundaries.pbf --overwrite -o $geojson/boundaries.geojson &&
 echo; echo Build roads
 osmium extract --bbox=$bbox_roads $osmFile --overwrite -o $osm/roads.tmp.pbf &&
 osmium tags-filter $osm/roads.tmp.pbf w/highway=track,path,bridleway,unclassified,motorway,trunk,primary,secondary,tertiary --overwrite -o $osm/roads.pbf &&
-osmium export $osm/roads.pbf --overwrite -o $geojson/roads.tmp.geojson &&
+osmium export $osm/roads.pbf --overwrite -o $geojson/roads.geojson &&
 rm -f $osm/roads.tmp.pbf &&
-ogr2ogr -simplify 0.001 $geojson/roads.geojson $geojson/roads.tmp.geojson
-rm -f $geojson/roads.tmp.geojson &&
 
 # places
 echo; echo Build places
