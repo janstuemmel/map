@@ -41,9 +41,9 @@ bbox_roads=0.831,24.531,17.904,37.429 # from eat algeria to west libya
 # osmium export $osm/water.pbf --overwrite -o $geojson/water.geojson &&
 
 # # poi
-# echo; echo Build poi
-# osmium tags-filter $osmFile n/historic=archaeological_site n/natural=rock,peak n/attraction=nature n/tourism=attraction,viewpoint n/amenity=drinking_water --overwrite -o $osm/poi.pbf &&
-# osmium export $osm/poi.pbf --overwrite -o $geojson/poi.geojson &&
+echo; echo Build poi
+osmium tags-filter $osmFile n/historic=archaeological_site,fort,ruins n/natural=rock,peak,spring,cave_entrance n/attraction=nature n/tourism=attraction,viewpoint,camp_site,wilderness_hut n/amenity=drinking_water,fuel,water_point n/man_made=water_well n/barrier=border_control --overwrite -o $osm/poi.pbf &&
+osmium export $osm/poi.pbf --overwrite -o $geojson/poi.geojson &&
 
 echo; echo Create tiles
 tippecanoe -Z0 -z10 \
@@ -56,7 +56,7 @@ tippecanoe -Z0 -z10 \
   -L boundaries:$geojson/boundaries.geojson \
   -L places:$geojson/places.geojson \
   -L poi:$geojson/poi.geojson \
-  -y highway -y name -y name:en -y name:de -y admin_level -y boundary -y place -y water -y salt -y intermittent -y natural -y waterway -y capital -y landuse -y historic -y archaeological_site -y attraction -y tourism -y amenity \
+  -y highway -y name -y name:en -y name:de -y admin_level -y boundary -y place -y water -y salt -y intermittent -y natural -y waterway -y capital -y landuse -y historic -y archaeological_site -y attraction -y tourism -y amenity -y man_made -y barrier \
   --simplification=10 \
   --drop-rate=1 \
   --drop-densest-as-needed \
@@ -65,7 +65,7 @@ tippecanoe -Z0 -z10 \
   --no-tile-size-limit \
   --force
 
-echo; echo; du -h $out/*
+echo; echo; du -hd 0 $out/*
 
 # .png extension so GitHub's raw CDN serves it with range request support (pmtiles doesn't)
 cp $out/map.pmtiles public/data/map.pmtiles.png
