@@ -1,10 +1,14 @@
 import { addProtocol, Map as MaplibreMap, setWorkerUrl } from "maplibre-gl";
 import workerUrl from "maplibre-gl/dist/maplibre-gl-worker.mjs?worker&url";
 import "maplibre-gl/dist/maplibre-gl.css";
-import { Protocol } from "pmtiles";
+import { Protocol as PMTilesProto } from "pmtiles";
+import {
+	layersElevation,
+	setupContours,
+	sourceElevation,
+} from "./features/elevation";
 import { addLandfills } from "./features/landfills";
 import { layersLandmarks, sourceLandmarks } from "./features/landmarks";
-import { layerTerrarium, sourceAWSTerrarium } from "./features/terrarium";
 import { addControls, addPersistMapView } from "./features/view";
 import { layerBackground, layerOcean, sourceWorld } from "./features/world";
 import { layersBoundaries } from "./features/world/layers/boundaries";
@@ -14,9 +18,10 @@ import { layersPoi } from "./features/world/layers/poi";
 import { layersRoads } from "./features/world/layers/roads";
 import { layersWater, layersWaterLabel } from "./features/world/layers/water";
 
-const protocol = new Protocol();
-addProtocol("pmtiles", protocol.tile);
+const pmTilesProto = new PMTilesProto();
+addProtocol("pmtiles", pmTilesProto.tile);
 setWorkerUrl(workerUrl);
+setupContours({ addProtocol });
 
 const map = new MaplibreMap({
 	container: "map",
@@ -33,7 +38,7 @@ const map = new MaplibreMap({
 		],
 		layers: [
 			layerBackground,
-			layerTerrarium,
+			...layersElevation,
 			...layersWater,
 			...layersLand,
 			...layersRoads,
@@ -46,7 +51,7 @@ const map = new MaplibreMap({
 		],
 		sources: {
 			...sourceWorld,
-			...sourceAWSTerrarium,
+			...sourceElevation,
 			...sourceLandmarks,
 		},
 	},
