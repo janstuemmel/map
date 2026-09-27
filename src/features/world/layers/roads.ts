@@ -10,7 +10,7 @@ export const layersRoads: LayerSpecification[] = [
 		filter: [
 			"in",
 			["get", "highway"],
-			["literal", ["track", "bridleway", "path"]],
+			["literal", ["track", "bridleway", "path", "unclassified"]],
 		],
 		paint: {
 			"line-color": [
@@ -34,7 +34,7 @@ export const layersRoads: LayerSpecification[] = [
 		filter: [
 			"in",
 			["get", "highway"],
-			["literal", ["track", "bridleway", "path"]],
+			["literal", ["track", "bridleway", "path", "unclassified"]],
 		],
 		paint: {
 			"line-color": [

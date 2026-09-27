@@ -11,7 +11,7 @@ export const layersLandmarks: SymbolLayerSpecification[] = [
 		minzoom: 6,
 		layout: {
 			"icon-image": "extras:shape-triangle",
-			"icon-size": 0.4,
+			"icon-size": 0.6,
 			"icon-allow-overlap": true,
 			"text-field": "{name}",
 			"text-font": ["noto_sans_regular"],

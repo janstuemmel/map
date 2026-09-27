@@ -33,7 +33,12 @@ export const createCityLayer = (
 		"source-layer": "places",
 		filter,
 		layout: {
-			"text-field": "{name:en}",
+			"text-field": [
+				"coalesce",
+				["get", "name:de"],
+				["get", "name:en"],
+				["get", "name"],
+			],
 			"text-font": ["noto_sans_regular"],
 			...layout,
 		},

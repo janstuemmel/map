@@ -8,8 +8,11 @@ import { layerTerrarium, sourceAWSTerrarium } from "./features/terrarium";
 import { addControls, addPersistMapView } from "./features/view";
 import { layerBackground, layerOcean, sourceWorld } from "./features/world";
 import { layersBoundaries } from "./features/world/layers/boundaries";
+import { layersLand } from "./features/world/layers/land";
 import { layersPlaces } from "./features/world/layers/places";
+import { layersPoi } from "./features/world/layers/poi";
 import { layersRoads } from "./features/world/layers/roads";
+import { layersWater, layersWaterLabel } from "./features/world/layers/water";
 
 const protocol = new Protocol();
 addProtocol("pmtiles", protocol.tile);
@@ -31,10 +34,14 @@ const map = new MaplibreMap({
 		layers: [
 			layerBackground,
 			layerTerrarium,
+			...layersWater,
+			...layersLand,
 			...layersRoads,
 			...layersBoundaries,
 			layerOcean,
 			...layersPlaces,
+			...layersPoi,
+			...layersWaterLabel,
 			...layersLandmarks,
 		],
 		sources: {
