@@ -6,7 +6,11 @@ dir=$out/osm
 
 mkdir -p $dir
 
-countries=(tunisia libya algeria)
+countries=(
+  tunisia
+  libya
+  # algeria
+)
 
 for country in "${countries[@]}"; do
   wget -O $dir/geofabrik.$country.pbf https://download.geofabrik.de/africa/$country-latest.osm.pbf

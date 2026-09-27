@@ -31,24 +31,24 @@ bbox_roads=0.831,24.531,17.904,37.429 # from eat algeria to west libya
 # osmium export $osm/places.pbf --overwrite -o $geojson/places.geojson &&
 
 # # land
-echo; echo Build land
-osmium tags-filter $osmFile a/landuse=forest,farmland,residential,commercial,industrial a/natural=wood,scrub,grassland,sand,wetland --overwrite -o $osm/land.pbf &&
-osmium export $osm/land.pbf --overwrite -o $geojson/land.geojson &&
+# echo; echo Build land
+# osmium tags-filter $osmFile a/landuse=forest,farmland,residential,commercial,industrial a/natural=wood,scrub,grassland,sand,wetland --overwrite -o $osm/land.pbf &&
+# osmium export $osm/land.pbf --overwrite -o $geojson/land.geojson &&
 
 # # water
 # echo; echo Build water
 # osmium tags-filter $osmFile w/waterway=river,stream,canal,drain,ditch a/natural=water,water --overwrite -o $osm/water.pbf &&
 # osmium export $osm/water.pbf --overwrite -o $geojson/water.geojson &&
 
-# poi
-echo; echo Build poi
-osmium tags-filter $osmFile n/historic=archaeological_site n/natural=rock,peak n/attraction=nature n/tourism=attraction,viewpoint n/amenity=drinking_water --overwrite -o $osm/poi.pbf &&
-osmium export $osm/poi.pbf --overwrite -o $geojson/poi.geojson &&
+# # poi
+# echo; echo Build poi
+# osmium tags-filter $osmFile n/historic=archaeological_site n/natural=rock,peak n/attraction=nature n/tourism=attraction,viewpoint n/amenity=drinking_water --overwrite -o $osm/poi.pbf &&
+# osmium export $osm/poi.pbf --overwrite -o $geojson/poi.geojson &&
 
 echo; echo Create tiles
 tippecanoe -Z0 -z10 \
   --clip-bounding-box=$bbox_africa \
-  -o $out/map.pmtiles \
+  -e $out/tiles \
   -L ocean:$geojson/ocean.geojson \
   -L water:$geojson/water.geojson \
   -L land:$geojson/land.geojson \
