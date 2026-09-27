@@ -24,6 +24,7 @@ export const sourceElevation: Record<string, SourceSpecification> = {
 		tiles: [terrariumTileUrl],
 		encoding: "terrarium",
 		tileSize: 256,
+		bounds: [0.831, 24.531, 17.904, 37.429],
 		maxzoom: terrariumMaxzoom,
 		attribution:
 			'© <a href="https://www.mapzen.com/rights">Mapzen</a> and <a href="https://www.mapzen.com/rights/#services-and-data-sources">others</a>',
