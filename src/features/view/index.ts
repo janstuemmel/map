@@ -2,6 +2,8 @@ import RulerControl from "@mapbox-controls/ruler";
 import "@mapbox-controls/ruler/src/index.css";
 import type { MapLibreMap } from "maplibre-gl";
 import { NavigationControl } from "maplibre-gl";
+import "./roadDistanceControl.css";
+import { RoadDistanceControl } from "./roadDistanceControl";
 import "./zoomIndicator.css";
 import { ZoomIndicatorControl } from "./zoomIndicator";
 
@@ -17,6 +19,7 @@ export const addControls = (map: MapLibreMap) => {
 	// container inherits pointer-events: none from maplibre-gl's control
 	// positioning wrapper and the button becomes unclickable.
 	ruler.container.classList.add("maplibregl-ctrl", "maplibregl-ctrl-group");
+	map.addControl(new RoadDistanceControl(), "top-right");
 };
 
 const STORAGE_KEY = "map-view";

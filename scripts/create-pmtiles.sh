@@ -56,7 +56,7 @@ tippecanoe -Z0 -z10 \
   -L boundaries:$geojson/boundaries.geojson \
   -L places:$geojson/places.geojson \
   -L poi:$geojson/poi.geojson \
-  -y highway -y name -y name:en -y name:de -y admin_level -y boundary -y place -y water -y salt -y intermittent -y natural -y waterway -y capital -y landuse -y historic -y archaeological_site -y attraction -y tourism -y amenity -y man_made -y barrier \
+  -y highway -y oneway -y name -y name:en -y name:de -y admin_level -y boundary -y place -y water -y salt -y intermittent -y natural -y waterway -y capital -y landuse -y historic -y archaeological_site -y attraction -y tourism -y amenity -y man_made -y barrier \
   --simplification=10 \
   --drop-rate=1 \
   --drop-densest-as-needed \

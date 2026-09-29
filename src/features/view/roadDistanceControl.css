@@ -1,0 +1,10 @@
+.road-distance-ctrl button {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	color: #333;
+}
+
+.road-distance-ctrl button.-active {
+	color: #e6007e;
+}
